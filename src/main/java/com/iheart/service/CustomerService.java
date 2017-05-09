@@ -8,4 +8,8 @@ import com.iheart.model.Customer;
 public interface CustomerService {
 
     void createCustomer(Customer customer);
+    void updateCustomer(Customer customer);
+    void deleteCustomer(Customer customer);
+    Customer getCustomer(Integer id);
+    boolean checkCustomerCredit(Integer id, Integer amount);
 }
