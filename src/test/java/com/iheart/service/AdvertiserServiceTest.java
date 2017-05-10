@@ -26,9 +26,31 @@ public class AdvertiserServiceTest {
     }
 
     @Test
-    public void createCustomer_successCase() throws Exception {
+    public void createAdvertiser_successCase() throws Exception {
         advertiserService.createAdvertiser(advertiser);
         Mockito.verify(mockAdvertiserMapper).insert(advertiser);
+    }
 
+    @Test
+    public void updateAdvertiser_successCase() throws Exception {
+        advertiserService.updateAdvertiser(advertiser);
+        Mockito.verify(mockAdvertiserMapper).update(advertiser);
+    }
+
+    @Test
+    public void deleteAdvertiser_successCase() throws Exception {
+        advertiserService.deleteAdvertiser(advertiser);
+        Mockito.verify(mockAdvertiserMapper).delete(advertiser);
+    }
+
+    @Test
+    public void getAdvertiser_successCase() throws Exception {
+        advertiserService.getAdvertiser(1);
+        Mockito.verify(mockAdvertiserMapper).get(1);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void checkAdvertiserCredit_successCase() throws Exception {
+        advertiserService.checkAdvertiserCredit(1, 1000);
     }
 }

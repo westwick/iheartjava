@@ -17,13 +17,13 @@ public class AdvertiserTest {
     }
 
     @Test
-    public void hasSufficientCredit_happyCase() {
+    public void hasSufficientCredit_successCase() {
         advertiser.setCreditLimit(1000);
         Assert.assertEquals(true, advertiser.hasSufficientCredit(500));
     }
 
     @Test
-    public void hasSufficientCredit_insufficientCredit() {
+    public void hasSufficientCredit_failureCase() {
         advertiser.setCreditLimit(20);
         Assert.assertEquals( false, advertiser.hasSufficientCredit(500));
     }
