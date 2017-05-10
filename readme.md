@@ -1,4 +1,4 @@
-#iheartjava
+# iheartjava
 
 ##### demo project by Andrew Westwick
 
@@ -13,4 +13,4 @@ To run the program: `java -jar {path to jar}`
 ## Notes
 
 * Actuator is running on port 8090, for example to check the API status: localhost:8090/health
-* You can explore the API with Swagger at localhost/swagger-ui.html
+* You can explore the API with Swagger at localhost:8080/swagger-ui.html
