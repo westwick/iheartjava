@@ -1,6 +1,6 @@
 package com.iheart.repository;
 
-import com.iheart.model.Customer;
+import com.iheart.model.Advertiser;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,17 +12,17 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-public class CustomerRepositoryIntegrationTest {
+public class AdvertiserRepositoryIntegrationTest {
     @Autowired
-    CustomerMapper customerMapper;
+    AdvertiserMapper advertiserMapper;
 
     @Test
     public void createCustomer() {
-        Customer customer = new Customer();
-        customer.setCustomerName("test");
-        customer.setContactName("Andrew");
-        customer.setCreditLimit(1000);
-        customerMapper.insert(customer);
+        Advertiser advertiser = new Advertiser();
+        advertiser.setAdvertiserName("test");
+        advertiser.setContactName("Andrew");
+        advertiser.setCreditLimit(1000);
+        advertiserMapper.insert(advertiser);
 
     }
 }

@@ -1,6 +1,6 @@
-create table IF NOT EXISTS customers (
+create table IF NOT EXISTS advertisers (
   id int primary key auto_increment,
-  customerName varchar(255),
+  advertiserName varchar(255),
   contactName varchar(255),
   creditLimit int(10)
 );
