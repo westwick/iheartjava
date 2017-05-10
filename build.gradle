@@ -13,6 +13,7 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
+apply plugin: "jacoco"
 
 version = '0.0.1'
 sourceCompatibility = 1.8
@@ -22,6 +23,18 @@ repositories {
 	jcenter()
 }
 
+jacoco {
+	toolVersion = "0.7.6.201602180812"
+	reportsDir = file("$buildDir/JacocoReport")
+}
+
+jacocoTestReport {
+	reports {
+		xml.enabled false
+		csv.enabled false
+		html.destination "${buildDir}/jacocoHtml"
+	}
+}
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-actuator')
@@ -31,9 +44,9 @@ dependencies {
 	compile "io.springfox:springfox-swagger2:2.6.1"
 	compile 'io.springfox:springfox-swagger-ui:2.6.1'
 
-
 	runtime('com.h2database:h2')
 	compileOnly('org.projectlombok:lombok')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile group: 'org.mockito', name: 'mockito-core', version: '1.10.19'
+	testCompile 'org.jooq:joor:0.9.6'
 }
