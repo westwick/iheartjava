@@ -45,7 +45,7 @@ public class AdvertiserServiceImpl implements AdvertiserService {
     public boolean checkAdvertiserCredit(Integer id, Integer amount) {
         Advertiser advertiser = getAdvertiser(id);
         if(advertiser == null) {
-            throw new NullPointerException("advertiser not found");
+            throw new IllegalArgumentException("advertiser not found");
         }
         return advertiser.hasSufficientCredit(amount);
     }

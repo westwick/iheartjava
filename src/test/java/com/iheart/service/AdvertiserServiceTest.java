@@ -49,8 +49,17 @@ public class AdvertiserServiceTest {
         Mockito.verify(mockAdvertiserMapper).get(1);
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void checkAdvertiserCredit_successCase() throws Exception {
+        Mockito.when(mockAdvertiserMapper.get(1)).thenReturn(new Advertiser("Dummy", "Contact", 2000));
         advertiserService.checkAdvertiserCredit(1, 1000);
+        Mockito.verify(mockAdvertiserMapper).get(1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void checkAdvertiserCredit_AdvertiserNotFound() throws Exception {
+        Mockito.when(mockAdvertiserMapper.get(1)).thenReturn(null);
+        advertiserService.checkAdvertiserCredit(1, 1000);
+        Mockito.verify(mockAdvertiserMapper).get(1);
     }
 }
