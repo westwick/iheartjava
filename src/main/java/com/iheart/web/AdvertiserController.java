@@ -20,7 +20,7 @@ public class AdvertiserController {
     @Autowired
     private AdvertiserService advertiserService;
 
-    @ApiOperation(value = "test", notes = "notes")
+    @ApiOperation(value = "Create a new advertiser", notes = "must specify advertiserName, contactName, and creditLimit")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "success")
     })
@@ -30,6 +30,10 @@ public class AdvertiserController {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
+    @ApiOperation(value = "Update an existing advertiser", notes = "Must specify advertiser ID to update")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "success")
+    })
     @RequestMapping(value = "/api/advertiser", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity updateAdvertiser(@RequestBody Advertiser advertiser) {
         if (validateAdvertiserId(advertiser)) return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
@@ -37,6 +41,10 @@ public class AdvertiserController {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
+    @ApiOperation(value = "Delete an advertiser")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "success")
+    })
     @RequestMapping(value = "/api/advertiser", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity deleteAdvertiser(@RequestBody Advertiser advertiser) {
         if (validateAdvertiserId(advertiser)) return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
@@ -44,6 +52,10 @@ public class AdvertiserController {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
+    @ApiOperation(value = "Get advertiser details", notes = "Must specify advertiser ID")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "success")
+    })
     @RequestMapping(value = "/api/advertiser",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -55,6 +67,7 @@ public class AdvertiserController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
+    @ApiOperation(value = "Check advertiser credit", notes = "Must specify advertiser ID and credit amount to check")
     @RequestMapping(value = "/api/advertiser/check-credit",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
